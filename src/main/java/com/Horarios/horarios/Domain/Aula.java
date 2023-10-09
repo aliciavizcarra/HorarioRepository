@@ -6,7 +6,7 @@ public class Aula{
 
     private String aula;
 
-    public Materia(String nombre, String responsable, String aula) {
+    public Aula(String nombre, String responsable, String aula) {
         this.nombre = nombre;
         this.responsable = responsable;
         this.aula = aula;
