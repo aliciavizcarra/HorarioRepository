@@ -6,10 +6,10 @@ public class Aula{
 
     private String aula;
 
-    public Aula(String nombre, String responsable, String aula) {
+    public Aula(String nombre, String responsable, String materia) {
         this.nombre = nombre;
         this.responsable = responsable;
-        this.aula = aula;
+        this.aula = materia;
     }
 
     public String getNombre() {
