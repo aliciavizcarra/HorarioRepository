@@ -4,12 +4,12 @@ public class Aula{
 
     private final String  nombre, responsable;
 
-    private String aula;
+    private String materia;
 
     public Aula(String nombre, String responsable, String materia) {
         this.nombre = nombre;
         this.responsable = responsable;
-        this.aula = materia;
+        this.materia = materia;
     }
 
     public String getNombre() {
@@ -20,8 +20,8 @@ public class Aula{
         return responsable;
     }
 
-    public String getAula() {
-        return aula;
+    public String getMateria() {
+        return materia;
     }
 
     @Override
