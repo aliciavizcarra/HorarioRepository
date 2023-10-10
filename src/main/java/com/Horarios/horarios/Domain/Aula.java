@@ -26,10 +26,10 @@ public class Aula{
 
     @Override
     public String toString() {
-        return "Materia{" +
+        return "Aula{" +
                 "nombre='" + nombre + '\'' +
                 ", responsable='" + responsable + '\'' +
-                ", aula='" + aula + '\'' +
+                ", materia='" + materia + '\'' +
                 '}';
     }
 }
