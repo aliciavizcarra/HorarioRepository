@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Horario</title>
+</head>
+<body>
+    <table border="2">
+        <tr border="">
+            <td>Aula</td>
+            <td>Materia</td>
+            <td>Sesion</td>
+            <td>Día</td>
+            <td>HoraInicio</td>
+            <td>HoraFin</td>
+        </tr>
+        <tr th:each="materia : ${horarioEspecifico}">
+            <th th:text="${materia.nombre}"></th>
+            <th th:text="${materia.materia}"></th>
+            <th th:number="${materia.id}"></th>
+            <th th:text="${materia.dia}"></th>
+            <th th:text="${materia.horaInicio}"></th>
+            <th th:text="${materia.horaFin}"></th>
+        </tr>
+</table>
+</body>
+</html>

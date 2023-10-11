@@ -6,6 +6,7 @@ import com.Horarios.horarios.Infraestructure.data.AulasConexionSQL;
 import com.Horarios.horarios.Infraestructure.data.AulasRepositorySQL;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -25,6 +26,9 @@ public class HorarioController {
             model.addAttribute("list",list);
             return "horario";
         }
-    }
 
 
+    @PostMapping("/horarioEspecifico")
+        String horarioEspecifico()
+
+}
