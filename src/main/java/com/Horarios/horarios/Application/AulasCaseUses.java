@@ -20,6 +20,6 @@ public class AulasCaseUses {
     }
 
     public List<Sesion> getSesionesFromAula(String aula){
-        return this.getSesionesFromAula(aula);
+        return this.aulasRepository.getSesionesFromAula(aula);
     }
 }

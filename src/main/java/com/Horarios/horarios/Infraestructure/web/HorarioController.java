@@ -30,9 +30,8 @@ public class HorarioController {
 
 
     @PostMapping("/horarioEspecifico")
-        String horarioEspecifico(Model model, @RequestParam (name = "nombre") String nombre){
+        String horarioEspecifico(Model model,  String nombre){
         List<Sesion> listaEspecifica=this.aulasCaseUses.getSesionesFromAula(nombre);
-
         model.addAttribute("horarioEspecifico", listaEspecifica);
         return "horarioEspecifico";
     }
