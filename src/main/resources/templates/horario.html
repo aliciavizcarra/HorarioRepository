@@ -8,13 +8,15 @@
     <h1>Horario</h1>
 
     <form action="/horarioEspecifico" method="post">
-        <input name="nombre" type="text" placeholder="Introduce el aula deseada>">
+        <input name="nombre" type="text" placeholder="Introduce el aula deseada">
         <button>Buscar</button>
     </form>
 
-    <table>
+    <br>
 
-        <tr>
+    <table border="5">
+
+        <tr border="3">
             <td>Materia</td>
             <td>Aula</td>
             <td>Dia</td>
@@ -26,14 +28,16 @@
         <tr th:each="sesion:${list}">
 
             <td th:text="${sesion.materia}"></td>
-            <td th:text="${sesion.aula}"></td>
+            <td th:text="${sesion.nombre}"></td>
             <td th:text="${sesion.dia}"></td>
-            <td th:text="${sesion.sesion}"></td>
+            <td th:text="${sesion.id}"></td>
             <td th:text="${sesion.horaInicio}"></td>
             <td th:text="${sesion.horaFin}"></td>
         </tr>
 
     </table>
+
+
 
 </body>
 </html>
