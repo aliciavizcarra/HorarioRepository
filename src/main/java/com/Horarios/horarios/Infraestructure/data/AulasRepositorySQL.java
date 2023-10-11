@@ -51,7 +51,7 @@ public class AulasRepositorySQL implements AulasRepository {
     @Override
     public List<Sesion> getSesionesFromAula(String aula) {
         List<Sesion> lista=new ArrayList<>();
-        String consultaBusqueda="SELECT Materias.aula, Materias.materia,Materias.sesion, Sesiones.dia, Sesiones.horaInicio, Sesiones.horaFin FROM Sesiones JOIN Materias ON Sesiones.sesion = Materias.sesion AND Materias.dia=Sesiones.dia WHERE Materias.aula LIKE '"+ aula+"' order by Sesiones.dia, Sesiones.sesion;";
+        String consultaBusqueda="SELECT Materias.aula, Materias.materia,Materias.sesion, Sesiones.dia, Sesiones.horaInicio, Sesiones.horaFin FROM Sesiones JOIN Materias ON Sesiones.sesion = Materias.sesion AND Materias.dia=Sesiones.dia WHERE Materias.aula LIKE '"+ aula+"' order by Sesiones.dia, Sesiones.sesion; ";
         Connection connection=AulasConexionSQL.getCon();
             try{
                 Statement stmt=connection.createStatement();
