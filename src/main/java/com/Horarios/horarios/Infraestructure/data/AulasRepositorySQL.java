@@ -52,19 +52,25 @@ public class AulasRepositorySQL implements AulasRepository {
     public List<Sesion> getSesionesFromAula(Aula aula) {
         List<Sesion> lista=new ArrayList<>();
         String consultaBusqueda="SELECT * FROM Sesiones JOIN Materias ON Sesiones.sesion = Materias.sesion WHERE aula like '"+ aula.getNombre()+"';";
-        Connection connection=AulasConexionSQL.getCon();
+
             try{
-                Statement stmt=connection.createStatement();
+                Statement stmt=con.createStatement();
                 ResultSet rs=stmt.executeQuery(consultaBusqueda);
                 while (rs.next()){
-                    String dia=rs.getString(1);
-                    Integer sesion=rs.getInt(2);
-                    String horaInicio=rs.getString(3);
-                    String horaFin=rs.getString(4);
 
-                    lista.add(new Sesion(dia,horaInicio,horaFin,sesion));
+                    String nombre=rs.getString(1);
+                    String materia=rs.getString(2);
+                    Integer sesion=rs.getInt(3);
+                    String dia=rs.getString(4);
+                    String horaInicio=rs.getString(5);
+                    String horaFin=rs.getString(6);
+
+                    lista.add(new Sesion(nombre,materia,sesion,dia,horaInicio,horaFin));
 
                 }
+                rs.close();
+                stmt.close();
+                con.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
