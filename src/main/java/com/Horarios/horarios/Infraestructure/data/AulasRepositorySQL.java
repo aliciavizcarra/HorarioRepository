@@ -20,7 +20,7 @@ public class AulasRepositorySQL implements AulasRepository {
     public List<Sesion> getAll() {
 
         List<Sesion> list = new ArrayList<>();
-        String consulta = "SELECT Materias.materia, Materias.aula ,Sesiones.sesion ,Sesiones.dia, Sesiones.horaInicio, Sesiones.horaFin FROM Materias JOIN Sesiones ON Materias.sesion=Sesiones.sesion";
+        String consulta = "SELECT Materias.materia, Materias.aula ,Sesiones.sesion ,Sesiones.dia, Sesiones.horaInicio, Sesiones.horaFin FROM Materias JOIN Sesiones ON Materias.sesion=Sesiones.sesion AND Materias.dia=Sesiones.dia";
 
         try{
             Statement stm = con.createStatement();
@@ -51,7 +51,7 @@ public class AulasRepositorySQL implements AulasRepository {
     @Override
     public List<Sesion> getSesionesFromAula(String aula) {
         List<Sesion> lista=new ArrayList<>();
-        String consultaBusqueda="SELECT Materias.aula, Materias.materia,Materias.sesion, Sesiones.dia, Sesiones.horaInicio, Sesiones.horaFin FROM Sesiones JOIN Materias ON Sesiones.sesion = Materias.sesion WHERE Materias.aula LIKE '"+ aula+"';";
+        String consultaBusqueda="SELECT Materias.aula, Materias.materia,Materias.sesion, Sesiones.dia, Sesiones.horaInicio, Sesiones.horaFin FROM Sesiones JOIN Materias ON Sesiones.sesion = Materias.sesion AND Materias.dia=Sesiones.dia WHERE Materias.aula LIKE '"+ aula+"';";
         Connection connection=AulasConexionSQL.getCon();
             try{
                 Statement stmt=connection.createStatement();
@@ -62,7 +62,7 @@ public class AulasRepositorySQL implements AulasRepository {
                     Integer sesion=rs.getInt(3);
                     String dia=rs.getString(4);
                     String horaInicio=rs.getString(5);
-                    String horaFin=rs.getString(5);
+                    String horaFin=rs.getString(6);
 
                     lista.add(new Sesion(nombre,materia,sesion,dia,horaInicio,horaFin));
 
