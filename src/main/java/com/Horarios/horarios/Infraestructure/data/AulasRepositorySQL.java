@@ -20,7 +20,7 @@ public class AulasRepositorySQL implements AulasRepository {
     public List<Sesion> getAll() {
 
         List<Sesion> list = new ArrayList<>();
-        String consulta = "SELECT Materias.materia, Materias.aula , Sesiones.dia, Sesiones.sesion, Sesiones.horaInicio, Sesiones.horaFin FROM Materias JOIN Sesiones ON Materias.sesion=Sesiones.sesion";
+        String consulta = "SELECT Materias.materia, Materias.aula ,Sesiones.sesion ,Sesiones.dia, Sesiones.horaInicio, Sesiones.horaFin FROM Materias JOIN Sesiones ON Materias.sesion=Sesiones.sesion";
 
         try{
             Statement stm = con.createStatement();

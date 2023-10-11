@@ -7,20 +7,20 @@
 <body>
     <table border="2">
         <tr border="">
-            <td>Aula</td>
-            <td>Materia</td>
-            <td>Sesion</td>
-            <td>Día</td>
-            <td>HoraInicio</td>
-            <td>HoraFin</td>
+            <th>Aula</th>
+            <th>Materia</th>
+            <th>Sesion</th>
+            <th>Día</th>
+            <th>HoraInicio</th>
+            <th>HoraFin</th>
         </tr>
         <tr th:each="materia : ${horarioEspecifico}">
-            <th th:text="${materia.nombre}"></th>
-            <th th:text="${materia.materia}"></th>
-            <th th:number="${materia.id}"></th>
-            <th th:text="${materia.dia}"></th>
-            <th th:text="${materia.horaInicio}"></th>
-            <th th:text="${materia.horaFin}"></th>
+            <td th:text="${materia.nombre}"></td>
+            <td th:text="${materia.materia}"></td>
+            <td th:text="${materia.id}"></td>
+            <td th:text="${materia.dia}"></td>
+            <td th:text="${materia.horaInicio}"></td>
+            <td th:text="${materia.horaFin}"></td>
         </tr>
 </table>
 </body>
