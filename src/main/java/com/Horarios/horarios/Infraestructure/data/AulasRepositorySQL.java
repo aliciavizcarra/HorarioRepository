@@ -19,7 +19,7 @@ public class AulasRepositorySQL implements AulasRepository {
     public List<Aula> getAll() {
 
         List<Aula> list = new ArrayList<>();
-        String consulta = "SELECT * FROM Materias JOIN Sesiones";
+        String consulta = "SELECT Materias.materia, Materias.aula , Sesiones.dia, Sesiones.sesion, Sesiones.horaInicio, Sesiones.horaFin FROM Materias JOIN Sesiones ON Materias.sesion=Sesiones.sesion";
 
         try{
             Statement stm = con.createStatement();
@@ -27,12 +27,14 @@ public class AulasRepositorySQL implements AulasRepository {
 
             while(rs.next()){
 
-                String materia = rs.getNString("matricula");
-                String responsable = rs.getNString("responsable");
+                String materia = rs.getNString("materia");
                 String aula = rs.getNString("aula");
                 String sesion = rs.getNString("sesion");
                 String dia= rs.getNString("dia");
+                String horaInicio= rs.getNString("horaInicio");
+                String horaFin=rs.getNString("horaFin");
 
+                    list.add(new Aula(aula,materia));
             }
 
 

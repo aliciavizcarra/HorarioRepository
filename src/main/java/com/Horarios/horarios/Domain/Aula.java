@@ -2,9 +2,9 @@ package com.Horarios.horarios.Domain;
 
 public class Aula{
 
-    private final String  nombre;
+    public final String  nombre;
 
-    private String materia;
+    public String materia;
 
     public Aula(String nombre,String materia) {
         this.nombre = nombre;
