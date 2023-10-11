@@ -6,7 +6,7 @@ public class Sesion extends Aula{
 
     private Integer id;
 
-    public Sesion(String nombre, String materia, String dia, String horaInicio, String horaFin, Integer id) {
+    public Sesion(String nombre, String materia,Integer id, String dia, String horaInicio, String horaFin) {
         super(nombre, materia);
         this.dia = dia;
         this.horaInicio = horaInicio;
