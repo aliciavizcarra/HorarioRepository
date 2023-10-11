@@ -67,6 +67,7 @@ public class AulasRepositorySQL implements AulasRepository {
 
                     lista.add(new Sesion(nombre,materia,sesion,dia,horaInicio,horaFin));
 
+
                 }
                 rs.close();
                 stmt.close();
