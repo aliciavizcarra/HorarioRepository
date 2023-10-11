@@ -35,7 +35,7 @@ public class AulasRepositorySQL implements AulasRepository {
                 String horaInicio= rs.getNString("horaInicio");
                 String horaFin=rs.getNString("horaFin");
 
-                    list.add(new Sesion(aula,materia,dia,horaInicio,horaFin,sesion));
+                    list.add(new Sesion(aula,materia,sesion,dia,horaInicio,horaFin));
             }
 
             rs.close();
