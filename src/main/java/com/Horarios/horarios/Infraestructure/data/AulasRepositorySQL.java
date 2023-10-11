@@ -15,10 +15,11 @@ import java.util.List;
 public class AulasRepositorySQL implements AulasRepository {
 
     Connection con = AulasConexionSQL.getCon();
-    @Override
-    public List<Aula> getAll() {
 
-        List<Aula> list = new ArrayList<>();
+    @Override
+    public List<Sesion> getAll() {
+
+        List<Sesion> list = new ArrayList<>();
         String consulta = "SELECT Materias.materia, Materias.aula , Sesiones.dia, Sesiones.sesion, Sesiones.horaInicio, Sesiones.horaFin FROM Materias JOIN Sesiones ON Materias.sesion=Sesiones.sesion";
 
         try{
@@ -29,49 +30,42 @@ public class AulasRepositorySQL implements AulasRepository {
 
                 String materia = rs.getNString("materia");
                 String aula = rs.getNString("aula");
-                String sesion = rs.getNString("sesion");
+                Integer sesion = rs.getInt("sesion");
                 String dia= rs.getNString("dia");
                 String horaInicio= rs.getNString("horaInicio");
                 String horaFin=rs.getNString("horaFin");
 
-                    list.add(new Aula(aula,materia));
+                    list.add(new Sesion(aula,materia,sesion,dia,horaInicio,horaFin));
             }
 
-
-
+            rs.close();
+            stm.close();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-
-        return null;
+        return list;
     }
 
     @Override
     public List<Sesion> getSesionesFromAula(Aula aula) {
         List<Sesion> lista=new ArrayList<>();
         String consultaBusqueda="SELECT * FROM Sesiones JOIN Materias ON Sesiones.sesion = Materias.sesion WHERE aula like '"+ aula.getNombre()+"';";
-
+        Connection connection=AulasConexionSQL.getCon();
             try{
-                Statement stmt=con.createStatement();
+                Statement stmt=connection.createStatement();
                 ResultSet rs=stmt.executeQuery(consultaBusqueda);
                 while (rs.next()){
+                    String dia=rs.getString(1);
+                    Integer sesion=rs.getInt(2);
+                    String horaInicio=rs.getString(3);
+                    String horaFin=rs.getString(4);
 
-                    String nombre=rs.getString(1);
-                    String materia=rs.getString(2);
-                    Integer sesion=rs.getInt(3);
-                    String dia=rs.getString(4);
-                    String horaInicio=rs.getString(5);
-                    String horaFin=rs.getString(6);
-
-                    lista.add(new Sesion(nombre,materia,sesion,dia,horaInicio,horaFin));
+                    lista.add(new Sesion(dia,horaInicio,horaFin,));
 
 
                 }
-                rs.close();
-                stmt.close();
-                con.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
