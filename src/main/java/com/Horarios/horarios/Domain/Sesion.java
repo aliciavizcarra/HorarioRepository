@@ -1,17 +1,19 @@
 package com.Horarios.horarios.Domain;
 
-public class Sesion {
+public class Sesion extends Aula{
 
     private final String dia,horaInicio, horaFin;
 
     private Integer id;
 
-    public Sesion(String dia,String horaInicio, String horaFin, Integer id) {
-        this.dia=dia;
+    public Sesion(String nombre, String materia, String dia, String horaInicio, String horaFin, Integer id) {
+        super(nombre, materia);
+        this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.id = id;
     }
+
 
     public String getDia() {
         return dia;
