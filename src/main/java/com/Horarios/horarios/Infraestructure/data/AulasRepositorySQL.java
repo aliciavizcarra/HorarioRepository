@@ -57,12 +57,14 @@ public class AulasRepositorySQL implements AulasRepository {
                 Statement stmt=connection.createStatement();
                 ResultSet rs=stmt.executeQuery(consultaBusqueda);
                 while (rs.next()){
-                    String dia=rs.getString(1);
-                    Integer sesion=rs.getInt(2);
-                    String horaInicio=rs.getString(3);
-                    String horaFin=rs.getString(4);
+                    String nombre=rs.getString(1);
+                    String materia=rs.getString(2);
+                    Integer sesion=rs.getInt(3);
+                    String dia=rs.getString(4);
+                    String horaInicio=rs.getString(5);
+                    String horaFin=rs.getString(5);
 
-                    lista.add(new Sesion(dia,horaInicio,horaFin,));
+                    lista.add(new Sesion(nombre,materia,sesion,dia,horaInicio,horaFin));
 
 
                 }
