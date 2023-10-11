@@ -15,10 +15,11 @@ import java.util.List;
 public class AulasRepositorySQL implements AulasRepository {
 
     Connection con = AulasConexionSQL.getCon();
-    @Override
-    public List<Aula> getAll() {
 
-        List<Aula> list = new ArrayList<>();
+    @Override
+    public List<Sesion> getAll() {
+
+        List<Sesion> list = new ArrayList<>();
         String consulta = "SELECT Materias.materia, Materias.aula , Sesiones.dia, Sesiones.sesion, Sesiones.horaInicio, Sesiones.horaFin FROM Materias JOIN Sesiones ON Materias.sesion=Sesiones.sesion";
 
         try{
@@ -29,23 +30,22 @@ public class AulasRepositorySQL implements AulasRepository {
 
                 String materia = rs.getNString("materia");
                 String aula = rs.getNString("aula");
-                String sesion = rs.getNString("sesion");
+                Integer sesion = rs.getInt("sesion");
                 String dia= rs.getNString("dia");
                 String horaInicio= rs.getNString("horaInicio");
                 String horaFin=rs.getNString("horaFin");
 
-                    list.add(new Aula(aula,materia));
+                    list.add(new Sesion(aula,materia,dia,horaInicio,horaFin,sesion));
             }
 
-
-
+            rs.close();
+            stm.close();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-
-        return null;
+        return list;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class AulasRepositorySQL implements AulasRepository {
                     String horaInicio=rs.getString(3);
                     String horaFin=rs.getString(4);
 
-                    lista.add(new Sesion(dia,horaInicio,horaFin,sesion));
+                    lista.add(new Sesion(dia,horaInicio,horaFin,));
 
                 }
             } catch (SQLException e) {

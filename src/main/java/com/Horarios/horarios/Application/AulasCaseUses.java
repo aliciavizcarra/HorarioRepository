@@ -15,7 +15,7 @@ public class AulasCaseUses {
         this.aulasRepository = aulasRepository;
     }
 
-    public List<Aula> getAll(){
+    public List<Sesion> getAll(){
         return this.aulasRepository.getAll();
     }
 
