@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -29,6 +30,11 @@ public class HorarioController {
 
 
     @PostMapping("/horarioEspecifico")
-        String horarioEspecifico()
+        String horarioEspecifico(Model model, @RequestParam (name = "nombre") String nombre){
+        List<Sesion> listaEspecifica=this.aulasCaseUses.getSesionesFromAula(nombre);
+
+        model.addAttribute("horarioEspecifico", listaEspecifica);
+        return "horarioEspecifico";
+    }
 
 }
