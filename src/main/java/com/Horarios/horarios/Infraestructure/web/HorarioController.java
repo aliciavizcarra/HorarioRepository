@@ -22,6 +22,7 @@ public class HorarioController {
     @RequestMapping("/horario")
         String horario(Model model){
             List<Sesion> list = this.aulasCaseUses.getAll();
+            model.addAttribute("list",list);
             return "horario";
         }
     }
