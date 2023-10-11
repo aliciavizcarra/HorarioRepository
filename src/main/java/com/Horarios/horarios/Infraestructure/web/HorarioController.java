@@ -33,6 +33,7 @@ public class HorarioController {
         String horarioEspecifico(Model model,  String nombre){
         List<Sesion> listaEspecifica=this.aulasCaseUses.getSesionesFromAula(nombre);
         model.addAttribute("horarioEspecifico", listaEspecifica);
+        model.addAttribute("nombre",nombre);
         return "horarioEspecifico";
     }
 
