@@ -4,6 +4,7 @@ import com.Horarios.horarios.Domain.Aula;
 import com.Horarios.horarios.Domain.AulasRepository;
 import com.Horarios.horarios.Domain.Sesion;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,10 +48,25 @@ public class AulasRepositorySQL implements AulasRepository {
 
     @Override
     public List<Sesion> getSesionesFromAula(Aula aula) {
-        String consultaBusqueda="SELECT * FROM Sesiones JOIN Materias ON Sesiones.sesion = "+aula.getMateria()+".sesion ;";
+        List<Sesion> lista=new ArrayList<>();
+        String consultaBusqueda="SELECT * FROM Sesiones JOIN Materias ON Sesiones.sesion = Materias.sesion WHERE aula like '"+ aula.getNombre()+"';";
         Connection connection=AulasConexionSQL.getCon();
+            try{
+                Statement stmt=connection.createStatement();
+                ResultSet rs=stmt.executeQuery(consultaBusqueda);
+                while (rs.next()){
+                    String dia=rs.getString(1);
+                    Integer sesion=rs.getInt(2);
+                    String horaInicio=rs.getString(3);
+                    String horaFin=rs.getString(4);
 
-        return null;
+                    lista.add(new Sesion(dia,horaInicio,horaFin,sesion));
+
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        return lista;
     }
 }
 
