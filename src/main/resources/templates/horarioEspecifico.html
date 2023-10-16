@@ -21,21 +21,15 @@
                 <td th:text="${materia.horaInicio + ' - ' + materia.horaFin}"></td>
                 <td th:if="${materia.dia == 'Lunes'}" th:text="${materia.materia}"></td>
 
-        </tr>
-        <tr th:each="materia : ${horarioEspecifico}">
-            <td th:text="${materia.horaInicio + ' - ' + materia.horaFin}"></td>
+
+
             <td th:if="${materia.dia == 'Martes'}" th:text="${materia.materia}"></td>
-        </tr>
-        <tr th:each="materia : ${horarioEspecifico}">
-            <td th:text="${materia.horaInicio + ' - ' + materia.horaFin}"></td>
+
             <td th:if="${materia.dia == 'Miercoles'}" th:text="${materia.materia}"></td>
-        </tr>
-        <tr th:each="materia : ${horarioEspecifico}">
-            <td th:text="${materia.horaInicio + ' - ' + materia.horaFin}"></td>
+
+
             <td th:if="${materia.dia == 'Jueves'}" th:text="${materia.materia}"></td>
-        </tr>
-        <tr th:each="materia : ${horarioEspecifico}">
-            <td th:text="${materia.horaInicio + ' - ' + materia.horaFin}"></td>
+
             <td th:if="${materia.dia == 'Viernes'}" th:text="${materia.materia}"></td>
         </tr>
 
