@@ -9,21 +9,22 @@
     <h1> <span th:text="${nombre}"></span></h1>
     <table border="2">
         <tr border="">
-            <th>Aula</th>
-            <th>Materia</th>
-            <th>Sesion</th>
-            <th>Día</th>
-            <th>HoraInicio</th>
-            <th>HoraFin</th>
+            <th></th>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miercoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
         </tr>
-        <tr th:each="materia : ${horarioEspecifico}">
-            <td th:text="${materia.nombre}"></td>
-            <td th:text="${materia.materia}"></td>
-            <td th:text="${materia.id}"></td>
-            <td th:text="${materia.dia}"></td>
-            <td th:text="${materia.horaInicio}"></td>
-            <td th:text="${materia.horaFin}"></td>
-        </tr>
-</table>
+
+            <tr th:each="materia : ${horarioEspecifico}">
+                <td th:text="${materia.horaInicio + ' - ' + materia.horaFin}"></td>
+                    </th>
+                </th>
+            </tr>
+
+
+
+    </table>
 </body>
 </html>
