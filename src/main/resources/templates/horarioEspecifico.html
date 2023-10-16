@@ -19,8 +19,9 @@
 
             <tr th:each="materia : ${horarioEspecifico}">
                 <td th:text="${materia.horaInicio + ' - ' + materia.horaFin}"></td>
-                    </th>
-                </th>
+                <td th:if="${materia.dia == `Lunes`}">
+                    <td th:text="${materia.materia}"></td>
+                </td>
             </tr>
 
 
