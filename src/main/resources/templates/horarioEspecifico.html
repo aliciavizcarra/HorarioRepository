@@ -7,38 +7,23 @@
 <body>
 
     <h1> <span th:text="${nombre}"></span></h1>
-    <table border="2">
-        <tr border="">
+    <table border="5">
+        <tr>
             <th></th>
             <th>Lunes</th>
             <th>Martes</th>
-            <th>Miercoles</th>
+            <th>Miércoles</th>
             <th>Jueves</th>
             <th>Viernes</th>
         </tr>
-
         <tr th:each="materia : ${horarioEspecifico}">
-                <td th:text="${materia.horaInicio + ' - ' + materia.horaFin}"></td>
-                <td th:if="${materia.dia == 'Lunes'}" th:text="${materia.materia}"></td>
-
-
-
-            <td th:if="${materia.dia == 'Martes'}" th:text="${materia.materia}"></td>
-
-            <td th:if="${materia.dia == 'Miercoles'}" th:text="${materia.materia}"></td>
-
-
-            <td th:if="${materia.dia == 'Jueves'}" th:text="${materia.materia}"></td>
-
-            <td th:if="${materia.dia == 'Viernes'}" th:text="${materia.materia}"></td>
+            <td th:text="${materia.horaInicio + ' - ' + materia.horaFin}"></td>
+            <td th:if="${materia.dia == 'Lunes'}"><span th:text="${materia.materia}"></span></td>
+            <td th:if="${materia.dia == 'Martes'}"><span th:text="${materia.materia}"></span></td>
+            <td th:if="${materia.dia == 'Miércoles'}"><span th:text="${materia.materia}"></span></td>
+            <td th:if="${materia.dia == 'Jueves'}"><span th:text="${materia.materia}"></span></td>
+            <td th:if="${materia.dia == 'Viernes'}"><span th:text="${materia.materia}"></span></td>
         </tr>
-
-
-
-
-
-
-
     </table>
 </body>
 </html>
